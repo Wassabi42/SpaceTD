@@ -1,7 +1,6 @@
 using UnityEngine;
 using NUnit.Framework;
-using UnityEditor;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 
 public class Tower : MonoBehaviour
 {
@@ -15,13 +14,16 @@ public class Tower : MonoBehaviour
     [SerializeField] float shootTime;
     [SerializeField] float shootTimer;
 
-    public List[] sightList;
-    [SerializeField] float sightRadius;
+    public List<Transform> sightList = new List<Transform>();
     [SerializeField] float rotationSpeed = 1f;
 
     private void Awake()
     {
         enemyPosition = GameObject.Find("enemy").GetComponent<Transform>();
+    }
+    private void Start()
+    {
+        shootTimer = shootTime;
     }
     private void Update()
     {
@@ -34,43 +36,18 @@ public class Tower : MonoBehaviour
             shootTimer = shootTime;
             Shoot();
         }
+        Debug.DrawLine(transform.position, enemyPosition.position, Color.green);
 
-        float angle = Mathf.Atan2(enemyPosition.transform.position.y - transform.position.y, enemyPosition.transform.position.x - transform.position.x) * Mathf.Rad2Deg;
-        Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        float angle = Mathf.Atan2(enemyPosition.transform.position.x - transform.position.x, enemyPosition.transform.position.y - transform.position.y) * Mathf.Rad2Deg;
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, -angle));
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
     }
     public void Shoot()
     {
-        GameObject Projectile = Instantiate(bullet, shootPoint.position, Quaternion.identity, bulletParent);
+        GameObject Projectile = Instantiate(bullet, shootPoint.position, Quaternion.Euler(0,0,0), bulletParent);
         
         Rigidbody2D projectileRb = Projectile.GetComponent<Rigidbody2D>();
         projectileRb.linearVelocity = transform.up * bulletSpeed;
     }
 }
-
-#if UNITY_EDITOR
-
-    [CustomEditor(typeof(Tower))]
-
-    public class TowerCustomInspector : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-
-        Tower tower = (Tower)target;
-
-        GUILayout.Space(10f);
-
-        GUILayout.BeginHorizontal();
-
-        if(GUILayout.Button("Shoot", GUILayout.Width(90f)))
-        {
-            tower.Shoot();
-        }
-
-        GUILayout.EndHorizontal();
-    }
-}
-
-#endif
