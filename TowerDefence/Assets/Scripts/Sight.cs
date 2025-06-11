@@ -1,23 +1,25 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using System.Collections.Generic;
 
 public class Sight : MonoBehaviour
 {
+    Tower s_Tower;
+
+    private void Awake()
+    {
+        s_Tower = GetComponent<Tower>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Transform enemyPos = collision.GetComponent<Transform>();
-            GetComponent<Tower>().sightList.Add(enemyPos);
+            s_Tower.targetList.Add(collision.gameObject);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Transform enemyPos = collision.GetComponent<Transform>();
-            GetComponent<Tower>().sightList.Remove(enemyPos);
+            s_Tower.targetList.Remove(collision.gameObject);
         }
     }
 }

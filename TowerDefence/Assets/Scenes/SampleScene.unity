@@ -340,23 +340,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1086168366 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1011697096028145327, guid: aba28d71fdd3e314d9112260a13d0b78, type: 3}
-  m_PrefabInstance: {fileID: 862658623902376752}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1086168368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086168366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31f600d3bc1f8b84eada5a9b8d71f36b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1138481475
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +352,7 @@ GameObject:
   - component: {fileID: 1138481477}
   - component: {fileID: 1138481476}
   - component: {fileID: 1138481479}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -420,7 +403,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.2698653, y: 1.25026}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &1138481477
 SpriteRenderer:
@@ -486,7 +469,7 @@ Transform:
   m_GameObject: {fileID: 1138481475}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.88, y: 3.66, z: 0}
+  m_LocalPosition: {x: -6.12, y: 1.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -605,10 +588,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 478931705083972446, guid: aba28d71fdd3e314d9112260a13d0b78, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 478931705083972446, guid: aba28d71fdd3e314d9112260a13d0b78, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.3
       objectReference: {fileID: 0}
@@ -653,24 +632,18 @@ PrefabInstance:
       value: StarTower
       objectReference: {fileID: 0}
     - target: {fileID: 3016826129609106792, guid: aba28d71fdd3e314d9112260a13d0b78, type: 3}
-      propertyPath: rotationSpeed
-      value: 150
+      propertyPath: sightRadius
+      value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 8211453026035623142, guid: aba28d71fdd3e314d9112260a13d0b78, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -2135585597343286014, guid: 5aa8b770bc43046bc8d993d0d5b7f4a5, type: 3}
-    - target: {fileID: 9065328477145375567, guid: aba28d71fdd3e314d9112260a13d0b78, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.437
+    - target: {fileID: 3016826129609106792, guid: aba28d71fdd3e314d9112260a13d0b78, type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1011697096028145327, guid: aba28d71fdd3e314d9112260a13d0b78, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1011697096028145327, guid: aba28d71fdd3e314d9112260a13d0b78, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1086168368}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aba28d71fdd3e314d9112260a13d0b78, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
